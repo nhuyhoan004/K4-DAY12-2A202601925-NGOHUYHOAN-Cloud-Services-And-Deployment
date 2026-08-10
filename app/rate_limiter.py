@@ -43,8 +43,7 @@ class TokenBucket:
         return self.refill_per_minute / 60.0
 
     def available(self, client_id: str, now: float | None = None) -> float:
-        """Số token còn lại ở thời điểm ``now`` (đã tính phần nạp thêm).
-
+        """Số token còn lại ở thời điểm ``now`` (đã tính phần nạp thêm)."""
         now = now if now is not None else time.time()
         state = self.client.hgetall(self._key(client_id))
         
@@ -58,8 +57,7 @@ class TokenBucket:
         return min(float(self.capacity), tokens)
 
     def consume(self, client_id: str, now: float | None = None) -> None:
-        """Lấy 1 token khỏi xô, hết token thì raise 429.
-
+        """Lấy 1 token khỏi xô, hết token thì raise 429."""
         now = now if now is not None else time.time()
         tokens = self.available(client_id, now)
         

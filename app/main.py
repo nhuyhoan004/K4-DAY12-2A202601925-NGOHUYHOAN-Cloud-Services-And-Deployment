@@ -123,8 +123,7 @@ def chat(
     bucket: TokenBucket = Depends(get_bucket),
     guard: CostGuard = Depends(get_cost_guard),
 ):
-    """Gửi một tin nhắn tới service.
-
+    """Gửi một tin nhắn tới service."""
     bucket.consume(client_id)
     guard.check(client_id)
     

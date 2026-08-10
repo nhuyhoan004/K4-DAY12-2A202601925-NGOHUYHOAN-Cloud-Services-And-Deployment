@@ -27,7 +27,7 @@ def verify_bearer_token(
     authorization: str | None = Header(default=None),
     x_client_id: str | None = Header(default=None),
 ) -> str:
-    """Kiểm tra header ``Authorization``; trả về client_id nếu hợp lệ.
+    """Kiểm tra header ``Authorization``; trả về client_id nếu hợp lệ."""
 
     if not authorization:
         raise HTTPException(
